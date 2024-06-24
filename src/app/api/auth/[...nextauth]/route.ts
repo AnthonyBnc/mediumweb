@@ -1,8 +1,4 @@
 import NextAuth from "next-auth";
-import Github from "next-auth/providers/github";
-import Google from "next-auth/providers/google";
-import Discord from "next-auth/providers/discord";
-
 import { authOptions } from "~/server/auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 
