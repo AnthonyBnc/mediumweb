@@ -41,9 +41,12 @@ const BlogList: React.FC = () => {
                 </div>
               </div>
             </div>
-            <a className="mt-1 text-lg font-bold hover:underline" href="/Post">
+            <Link
+              className="mt-1 text-lg font-bold hover:underline"
+              href="/Post"
+            >
               {blogPost.title}
-            </a>
+            </Link>
             <div className="mt-1 text-sm font-light text-gray-50">
               {blogPost.description}
             </div>

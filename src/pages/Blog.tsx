@@ -166,12 +166,12 @@ const Blog = () => {
                   </p>
                 </div>
                 <div className="border-b border-gray-200">
-                  <a
+                  <Link
                     className="text-sm text-green-600 hover:text-blue-500"
                     href="#"
                   >
                     See the full list
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-2 font-semibold">Recommened Topic</div>
                 <div className="mt-2 flex flex-wrap gap-x-3 gap-y-2 text-sm font-light text-black">
@@ -184,41 +184,41 @@ const Blog = () => {
                   <a className="rounded-3xl bg-gray-100 p-3">True Crime</a>
                 </div>
                 <div className="border-b border-gray-200 py-5">
-                  <a
+                  <Link
                     className="text-sm text-green-600 hover:text-blue-500"
                     href="#"
                   >
                     See more topics
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-5 hidden flex-wrap gap-x-5 gap-y-2 text-sm font-light text-gray-500 md:flex">
-                  <a className="hover:text-blue-500" href="#">
+                  <Link className="hover:text-blue-500" href="#">
                     Help
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Status
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     About
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Careers
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Blog
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Privacy
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Terms
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Text to speech
-                  </a>
-                  <a className="hover:text-blue-500" href="#">
+                  </Link>
+                  <Link className="hover:text-blue-500" href="#">
                     Teams
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
