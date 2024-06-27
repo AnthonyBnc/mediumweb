@@ -13,7 +13,12 @@ export const metadata = {
   title: "Medium webpage",
   description:
     "Discover stories, thinking, and expertise from writers on any topic.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [
+    {
+      rel: "icon",
+      url: "https://cdn.mos.cms.futurecdn.net/uazw6gFQuEC29mxMM55Tpb.jpg",
+    },
+  ],
 };
 
 export default async function RootLayout({

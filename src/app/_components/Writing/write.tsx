@@ -6,19 +6,23 @@ import Head from "next/head";
 const Write = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(e.target.files[0] as File);
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("file", file);
+    if (file) {
+      formData.append("file", file);
+    }
 
     const res = await fetch("/api/upload", {
       method: "POST",
@@ -40,7 +44,6 @@ const Write = () => {
       <Head>
         <title>Write a Post</title>
       </Head>
-      <h1 className="mb-4 text-3xl font-bold">Write a New Post</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -48,20 +51,20 @@ const Write = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="w-full rounded border px-3 py-2"
+          className="w-full px-3 py-2"
         />
         <textarea
           placeholder="Content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
-          className="h-48 w-full rounded border px-3 py-2"
+          className="h-48 w-full px-3 py-2"
         />
         <input
           type="file"
           onChange={handleFileChange}
           required
-          className="w-full rounded border px-3 py-2"
+          className="w-full px-3 py-2"
         />
         <button
           type="submit"

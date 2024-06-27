@@ -56,7 +56,7 @@ export default function HomeSection() {
           <nav className="flex items-center gap-4 text-sm font-medium tracking-tight">
             <div className="hidden gap-6 md:flex">
               <button className="transition-all hover:underline">
-                Our story
+                <a href="/ourstory">Our story</a>
               </button>
               <button className="transition-all hover:underline">
                 Membership

@@ -13,6 +13,7 @@ import { ZodError } from "zod";
 
 import { getServerAuthSession } from "~/server/auth";
 import { db } from "~/server/db";
+import { NextApiRequest, NextApiResponse } from "next";
 
 /**
  * 1. CONTEXT
@@ -26,13 +27,21 @@ import { db } from "~/server/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: { headers: Headers }) => {
-  const session = await getServerAuthSession();
+type TRPCContext = {
+  db: typeof db;
+  session: ReturnType<typeof getServerAuthSession>;
+  req: NextApiRequest;
+  res: NextApiResponse;
+  headers: NextApiRequest["headers"];
+};
 
+export const createTRPCContext = async ({ req, res }: {req:NextApiRequest, res:NextApiResponse}) => {
+  const session = await getServerAuthSession();
   return {
     db,
     session,
-    ...opts,
+    req,
+    res,
   };
 };
 

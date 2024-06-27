@@ -1,10 +1,10 @@
 import {
-  ReactNode,
   useContext,
   createContext,
   useState,
-  Dispatch,
-  SetStateAction,
+  type Dispatch,
+  type SetStateAction,
+  type ReactNode,
 } from "react";
 
 export interface IAuthModalContext {
@@ -19,10 +19,18 @@ export interface IAuthModalContext {
 export const AuthModalContext = createContext<IAuthModalContext>({
   isOpen: false,
   isLogin: true,
-  setIsOpen: () => {},
-  setIsLogin: () => {},
-  triggerSignIn: () => {},
-  triggerSignUp: () => {},
+  setIsOpen: () => {
+    // This function is intentionally left empty
+  },
+  setIsLogin: () => {
+    // This function is intentionally left empty
+  },
+  triggerSignIn: () => {
+    // This function is intentionally left empty
+  },
+  triggerSignUp: () => {
+    // This function is intentionally left empty
+  },
 });
 
 export interface AuthModalContextProviderProps {

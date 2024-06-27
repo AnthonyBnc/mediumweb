@@ -6,10 +6,10 @@ import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 import HomeSection from "./_components/Homesection";
 import { GetServerSidePropsContext } from "next";
-
+import Link from "next/link";
 // Function to fetch session
 async function fetchSession() {
-  const session = await getServerAuthSession(); // No arguments needed
+  const session = await getServerAuthSession();
   return session;
 }
 
@@ -24,14 +24,5 @@ export default async function Home() {
     return null;
   }
 
-  return (
-    <>
-      <Head>
-        <title>Medium</title>
-        <meta name="description" content="Medium" />
-        <link rel="icon" href="/med.ico" />
-      </Head>
-      <HomeSection />
-    </>
-  );
+  return <HomeSection />;
 }

@@ -101,19 +101,19 @@ const OurStory = () => {
         </main>
 
         <div className="flex flex-col items-center">
-          <div className="min-h-[200px] w-full border-b border-b-2 border-t border-t-2 border-white p-16 text-center text-6xl text-white transition-colors duration-300 hover:bg-white hover:text-black">
+          <div className="min-h-[200px] w-full border-b border-t border-white p-16 text-center text-6xl text-white transition-colors duration-300 hover:bg-white hover:text-black">
             <Link href="#" className="flex items-center justify-between">
               <span>Start reading</span>
               <span className="ml-auto text-3xl">→</span>
             </Link>
           </div>
-          <div className="min-h-[200px] w-full border-b border-b-2 border-t border-t-2 border-white p-16 text-center text-6xl text-white transition-colors duration-300 hover:bg-white hover:text-black">
+          <div className="min-h-[200px] w-full border-b border-t border-white p-16 text-center text-6xl text-white transition-colors duration-300 hover:bg-white hover:text-black">
             <Link href="#" className="flex items-center justify-between">
               <span>Start writing</span>
               <span className="ml-auto text-3xl">→</span>
             </Link>
           </div>
-          <div className="min-h-[200px] w-full border-b border-b-2 border-t border-t-2 border-white p-16 text-center text-6xl text-white transition-colors duration-300 hover:bg-white hover:text-black">
+          <div className="min-h-[200px] w-full border-b border-t border-white p-16 text-center text-6xl text-white transition-colors duration-300 hover:bg-white hover:text-black">
             <Link href="#" className="flex items-center justify-between">
               <span>Become a member</span>
               <span className="ml-auto text-3xl">→</span>

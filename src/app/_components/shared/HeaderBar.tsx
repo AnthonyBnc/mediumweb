@@ -46,7 +46,7 @@ const Header = () => {
       <div className="flex space-x-9">
         <div>
           <button className="flex items-center">
-            <Link href="/write">
+            <Link href="/WritingPage">
               <div className="s flex space-x-3 font-sans text-gray-700 hover:text-gray-900">
                 <svg
                   className="h-5 w-5"
