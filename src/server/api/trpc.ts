@@ -43,7 +43,7 @@ export const createTRPCContext = async ({ req, res }: {req:NextRequest | NextApi
     session,
     req,
     res,
-
+    headers: req instanceof NextRequest ? req.headers : req.headers,
   };
 };
 

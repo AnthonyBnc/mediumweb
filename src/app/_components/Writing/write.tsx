@@ -39,7 +39,10 @@ const Write = () => {
   };
 
   const adjustTextareaHeight = () => {
-    const textarea = textareaRef.current!;
+    if (!textareaRef.current) {
+      return;
+    }
+    const textarea = textareaRef.current;
     textarea.style.height = "auto";
     textarea.style.height = `${textarea.scrollHeight}px`;
   };
