@@ -3,7 +3,6 @@ import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
   all: protectedProcedure.query(({ ctx }) => {
-    console.log(ctx.headers); // Access headers here if needed
     return ctx.db.post.findMany({
       where: {
         createdById: ctx.session.user.id,

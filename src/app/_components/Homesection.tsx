@@ -1,8 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import MGrid from "./landingpage/MGrid";
 import FooterBar from "./shared/Footer";
 import { useSession } from "next-auth/react";

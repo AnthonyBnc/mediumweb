@@ -36,7 +36,7 @@ export default async function handler(
         return;
       }
 
-      const { title, content } = fields as { [key: string]: string | string[] };
+      const { title, content } = fields as Record<string, string | string[]>;
       const file = files.file instanceof Array ? files.file[0] : files.file;
 
       if (!file || Array.isArray(title) || Array.isArray(content)) {
@@ -50,7 +50,7 @@ export default async function handler(
 
         const newFilePath = path.join(
           uploadDir,
-          file.newFilename || file.originalFilename || "default_filename",
+          file.newFilename ?? file.originalFilename ?? "default_filename",
         );
         await fs.rename(file.filepath, newFilePath);
 
@@ -59,7 +59,7 @@ export default async function handler(
             title: title as string,
             content: content as string,
             imagePath: `/uploads/${path.basename(newFilePath)}`,
-            createdBy: { connect: { id: session.user.id } },
+            createdBy: { connect: { id: session.user.id! } },
           },
         });
         res.status(201).json(post);
