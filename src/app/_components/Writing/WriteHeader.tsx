@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
 
-const WriteHeader = () => {
+const WriteHeader = ({ publishButton }: { publishButton: React.ReactNode }) => {
+  const { data: session } = useSession();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="container mx-auto max-w-6xl p-5">
+    <header className="container mx-auto max-w-6xl px-4 py-5 md:px-6">
       <div className="flex items-center justify-between">
-        <Link href="/..">
+        <Link href="/blog">
           <Image
             src="/mediumlogo.png"
             alt="Medium Logo"
@@ -15,7 +23,8 @@ const WriteHeader = () => {
           />
         </Link>
 
-        <div className="flex items-center justify-center space-x-9">
+        <div className="flex items-center space-x-4">
+          {publishButton && <div>{publishButton}</div>}
           <button className="text-gray-700 hover:text-gray-900">
             <svg
               className="h-6 w-6"
@@ -32,6 +41,38 @@ const WriteHeader = () => {
               />
             </svg>
           </button>
+
+          <div className="relative">
+            <button onClick={toggleMenu} className="focus:outline-none">
+              <img
+                src={
+                  session?.user?.image ??
+                  "https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
+                }
+                className="h-10 w-10 rounded-full"
+                alt="Profile"
+              />
+            </button>
+            {isMenuOpen && (
+              <div className="absolute right-0 z-20 mt-2 w-48 rounded-md bg-white shadow-lg">
+                <div className="py-1">
+                  <Link
+                    href="/profile"
+                    passHref
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                    className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-200"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>

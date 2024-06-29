@@ -14,6 +14,7 @@ import { ZodError } from "zod";
 import { getServerAuthSession } from "~/server/auth";
 import { db } from "~/server/db";
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest } from "next/server";
 
 /**
  * 1. CONTEXT
@@ -30,18 +31,19 @@ import { NextApiRequest, NextApiResponse } from "next";
 type TRPCContext = {
   db: typeof db;
   session: ReturnType<typeof getServerAuthSession>;
-  req: NextApiRequest;
-  res: NextApiResponse;
-  headers: NextApiRequest["headers"];
+  req: NextRequest | NextApiRequest;
+  res?: NextApiResponse;
+  headers: Headers | NextApiRequest["headers"];
 };
 
-export const createTRPCContext = async ({ req, res }: {req:NextApiRequest, res:NextApiResponse}) => {
+export const createTRPCContext = async ({ req, res }: {req:NextRequest | NextApiRequest, res:NextApiResponse}) => {
   const session = await getServerAuthSession();
   return {
     db,
     session,
     req,
     res,
+     headers: req instanceof NextRequest ? req.headers : req.headers,
   };
 };
 

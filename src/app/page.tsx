@@ -7,6 +7,7 @@ import { api } from "~/trpc/server";
 import HomeSection from "./_components/Homesection";
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
+
 // Function to fetch session
 async function fetchSession() {
   const session = await getServerAuthSession();
@@ -24,5 +25,9 @@ export default async function Home() {
     return null;
   }
 
-  return <HomeSection />;
+  return (
+    <>
+      <HomeSection />
+    </>
+  );
 }

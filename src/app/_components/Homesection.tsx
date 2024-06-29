@@ -3,42 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import AuthModal from "./AuthCompo";
-import { useAuthModalContext } from "./contexts/AuthModal.context";
 import MGrid from "./landingpage/MGrid";
 import FooterBar from "./shared/Footer";
+import { useSession } from "next-auth/react";
 
 export default function HomeSection() {
-  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const [isScrollComplete, setIsScrollComplete] = useState(false);
-
-  const { triggerSignIn } = useAuthModalContext();
-
-  const [height, setHeight] = useState<number>(0);
-
-  useEffect(() => {
-    if (heroRef) {
-      if (heroRef.current) {
-        setHeight(heroRef.current.clientHeight);
-      }
-    }
-  }, [heroRef]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", changeNavbarColor);
-  }, [height]);
-
-  const changeNavbarColor = () => {
-    if (height > 0) {
-      if (window.scrollY >= height - 100) {
-        setIsScrollComplete(true);
-      } else {
-        setIsScrollComplete(false);
-      }
-    }
-  };
-
+  const { data: session } = useSession();
   return (
     <div className="flex h-screen flex-col bg-[#FFC017]">
       <div className="border-b border-black">
@@ -61,22 +31,16 @@ export default function HomeSection() {
               <button className="transition-all hover:underline">
                 Membership
               </button>
-              <button
-                className="transition-all hover:underline"
-                onClick={triggerSignIn}
-              >
-                Write
+              <button className="transition-all hover:underline">
+                <a href="/SignInPage">Write</a>
               </button>
 
-              <button
-                className="transition-all hover:underline"
-                onClick={() => setIsAuthDialogOpen(true)}
-              >
-                Sign In
+              <button className="transition-all hover:underline">
+                <a href="/SignInPage">Sign In</a>
               </button>
             </div>
             <button className="mx-2 rounded-full bg-black px-4 py-2 text-white">
-              Get started
+              <a href="/SignInPage">Get started</a>
             </button>
           </nav>
         </header>
@@ -93,7 +57,7 @@ export default function HomeSection() {
               topic.
             </p>
             <button className="mt-10 rounded-3xl bg-black px-10 py-2 text-center text-xl font-light text-white">
-              <Link href="/blog">Start Reading</Link>
+              <a href="/SignInPage">Start Reading</a>
             </button>
           </div>
         </div>

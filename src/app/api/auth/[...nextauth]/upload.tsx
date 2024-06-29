@@ -59,7 +59,7 @@ export default async function handler(
             title: title as string,
             content: content as string,
             imagePath: `/uploads/${path.basename(newFilePath)}`,
-            createdBy: { connect: { id: session.user.id } }, 
+            createdBy: { connect: { id: session.user.id } },
           },
         });
         res.status(201).json(post);
