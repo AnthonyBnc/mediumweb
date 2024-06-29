@@ -6,12 +6,11 @@ const Write = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [file, setFile] = useState<File | null>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null!);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0] as File);
-    }
+    const file = e.target.files ? e.target.files[0] : null;
+    setFile(file ?? null);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
