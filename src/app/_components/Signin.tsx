@@ -1,10 +1,9 @@
 "use client";
 import { useSession } from "next-auth/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LoginPageDes from "./LoginPageDes";
 import Image from "next/image";
-import { useState } from "react";
 
 const SigninCompo = () => {
   const { data: session, status } = useSession();
@@ -33,18 +32,24 @@ const SigninCompo = () => {
   // If the session status is loading, you can show a loading state
   if (status === "loading") {
     return (
-      <div className="flex flex-col items-center justify-center p-4">
-        <div className="flex items-center justify-center">
+      <div className="flex min-h-screen flex-col items-center justify-center p-4">
+        <div className="flex w-full items-center justify-center">
           <Image
             src="/mediumlogo.png"
             alt="Medium Logo"
             width={200}
             height={35}
-            className="max-w-full"
+            className="h-auto max-w-full"
           />
         </div>
-        <div className="flex items-center justify-center">
-          <img src="/loading.gif" alt="Loading..." />
+        <div className="flex w-full flex-grow items-center justify-center pb-4">
+          <img
+            src="/loading.gif"
+            alt="Loading..."
+            width={600}
+            height={600}
+            className="max-h-full max-w-full object-contain"
+          />
         </div>
       </div>
     );
