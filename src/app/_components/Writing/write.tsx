@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import WriteHeader from "./WriteHeader";
+import createPost from "./create-post";
 
 const Write = () => {
   const [title, setTitle] = useState("");
@@ -23,19 +24,8 @@ const Write = () => {
       formData.append("file", file);
     }
 
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (res.ok) {
-      alert("Post created successfully!");
-      setTitle("");
-      setContent("");
-      setFile(null);
-    } else {
-      alert("Failed to create post");
-    }
+    const res = await createPost(formData);
+    console.log(res);
   };
 
   const adjustTextareaHeight = () => {
